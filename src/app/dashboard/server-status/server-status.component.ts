@@ -21,4 +21,7 @@ export class ServerStatusComponent implements OnInit {
       } else this.currentStatus = 'unknown';
     }, 5000);
   }
+  ngAfterViewInit() {
+    console.log('AFTER VIEW INIT');
+  }
 }
