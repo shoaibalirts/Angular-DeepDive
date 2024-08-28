@@ -1,4 +1,11 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  Input,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -7,10 +14,15 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   templateUrl: './control.component.html',
   styleUrl: './control.component.css',
   // encapsulation: ViewEncapsulation.None,
-  // host: {
-  //   class: 'control',
-  // },
+  host: {
+    class: 'control',
+  },
 })
 export class ControlComponent {
   @Input({ required: true }) label!: string;
+  private el = inject(ElementRef);
+
+  @HostListener('click') onClick() {
+    console.log(this.el);
+  }
 }
